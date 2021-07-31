@@ -1,46 +1,50 @@
 package tests;
 
 import components.RandomFormData;
-import org.junit.jupiter.api.BeforeAll;
+import io.qameta.allure.Link;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+import pages.RegistrationPageSteps;
 
-import static com.codeborne.selenide.Configuration.baseUrl;
-import static com.codeborne.selenide.Configuration.startMaximized;
+import static io.qameta.allure.Allure.step;
 
-public class FormTests {
+public class FormTests extends TestBase {
 
-    RegistrationPage registrationPage = new RegistrationPage();
-    RandomFormData rndData = new RandomFormData();
-
-    @BeforeAll
-    static void setup() {
-        baseUrl = "https://demoqa.com";
-        startMaximized = true;
-    }
+    private final RegistrationPageSteps steps = new RegistrationPageSteps();
+    private final RandomFormData rndData = new RandomFormData();
 
     @Test
+    @Owner("OlegV")
+    @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Student registration form test with random data")
     void positiveTypeTest() {
 
-        registrationPage.openPage()
-                .typeFirstName(rndData.firstName)
-                .typeLastName(rndData.lastName)
-                .typeEmail(rndData.email)
-                .selectGender(rndData.gender)
-                .typeMobileNumber(rndData.mobileNumber)
-                .setDateOfBirth(rndData.day, rndData.month, rndData.year)
-                .selectSubject(rndData.subject)
-                .selectHobby(rndData.hobby)
-                .uploadFile(rndData.fileName)
-                .typeCurrentAddress(rndData.currentAddress)
-                .selectState(rndData.state)
-                .selectCity(rndData.city)
-                .formSubmit();
+        steps.openPage();
+        step("Fill student registration form", () ->
+                steps.typeFirstName(rndData.firstName)
+                        .typeLastName(rndData.lastName)
+                        .typeEmail(rndData.email)
+                        .selectGender(rndData.gender)
+                        .typeMobileNumber(rndData.mobileNumber)
+                        .setDateOfBirth(rndData.day, rndData.month, rndData.year)
+                        .selectSubject(rndData.subject)
+                        .selectHobby(rndData.hobby)
+                        .uploadFile(rndData.fileName)
+                        .typeCurrentAddress(rndData.currentAddress)
+                        .selectState(rndData.state)
+                        .selectCity(rndData.city)
+                        .addScreenshot(".practice-form-wrapper", "full-filled form")
+                        .formSubmit());
 
-        registrationPage.checkResultTitle();
-        for (String key : rndData.dataForCheck.keySet()) {
-            String value = rndData.dataForCheck.get(key);
-            registrationPage.checkResultValue(key, value);
-        }
+        step("Verify successful form submit", () -> {
+            steps.checkResultTitle();
+            for (String key : rndData.dataForCheck.keySet()) {
+                String value = rndData.dataForCheck.get(key);
+                steps.checkResultValue(key, value);
+            }
+            steps.addScreenshot(".modal-content", "form for checked");
+        });
+
     }
 }
