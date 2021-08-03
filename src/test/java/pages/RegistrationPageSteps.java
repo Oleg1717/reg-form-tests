@@ -4,13 +4,12 @@ import components.CalendarSelectDate;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static java.lang.String.format;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegistrationPageSteps {
 
@@ -75,7 +74,7 @@ public class RegistrationPageSteps {
 
     @Step("Upload picture")
     public RegistrationPageSteps uploadFile(String fileName) {
-        $("#uploadPicture").uploadFile(new File("src/test/resources/" + fileName));
+        $("#uploadPicture").uploadFromClasspath("img/"+fileName);
         return this;
     }
 
@@ -100,8 +99,9 @@ public class RegistrationPageSteps {
     }
 
     @Step("Submit form")
-    public void formSubmit() {
+    public RegistrationPageSteps formSubmit() {
         $("#submit").click();
+        return this;
     }
 
     @Step("Check result title")
@@ -116,10 +116,18 @@ public class RegistrationPageSteps {
     }
 
     @Step("Added screenshot: {elementName}")
-    public RegistrationPageSteps addScreenshot(String selector, String elementName) {
+    public RegistrationPageSteps addElementScreenshot(String selector, String elementName) {
         Attach.getElementScreenshotAs(selector, elementName);
         return this;
     }
+
+    @Step("Check email wrong value")
+    public RegistrationPageSteps checkWrongEmail() {
+        assertThat($("#userEmail").getCssValue("border-color"))
+                .isEqualTo("rgb(220, 53, 69)");
+        return this;
+    }
+
 }
 
 

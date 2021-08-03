@@ -14,7 +14,7 @@ public class RandomFormData {
             , "Commerce", "Computer Science", "Economics", "Maths", "Physics", "Social Studies");
     private final static List<String> HOBBIES = Arrays.asList("Sports", "Reading", "Music");
     private final static List<String> STATES = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-    private final static Map<String, List<String>> CITIES = new HashMap<>() {{
+    private final static Map<String, List<String>> CITIES = new HashMap<String, List<String>>() {{
         put("NCR", Arrays.asList("Delhi", "Gurgaon", "Noida"));
         put("Uttar Pradesh", Arrays.asList("Agra", "Lucknow", "Merrut"));
         put("Haryana", Arrays.asList("Karnal", "Panipat"));
@@ -39,7 +39,7 @@ public class RandomFormData {
     public String month = dateOfBirth.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
     public String year = Integer.toString(dateOfBirth.get(Calendar.YEAR));
 
-    public Map<String, String> dataForCheck = new HashMap<>() {{
+    public Map<String, String> dataForCheck = new HashMap<String, String>() {{
         put("Student Name", firstName + " " + lastName);
         put("Student Email", email);
         put("Gender", gender);
