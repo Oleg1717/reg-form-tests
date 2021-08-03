@@ -1,5 +1,6 @@
 package tests.demoqa;
 
+import components.AllFieldsRandomData;
 import components.RandomFormData;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
@@ -15,7 +16,7 @@ import static io.qameta.allure.Allure.step;
 public class NegativeFormTests extends TestBase {
 
     private final RegistrationPageSteps steps = new RegistrationPageSteps();
-    private final RandomFormData rndData = new RandomFormData();
+    private final AllFieldsRandomData rndData = new AllFieldsRandomData();
 
     @Test
     @Severity(SeverityLevel.NORMAL)

@@ -3,6 +3,7 @@ package tests;
 import components.RandomFormData;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPageSteps;
@@ -15,6 +16,7 @@ public class FormTests extends TestBase {
     private final RandomFormData rndData = new RandomFormData();
 
     @Test
+    @Disabled
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Student registration form test with random data")

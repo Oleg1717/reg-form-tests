@@ -1,6 +1,6 @@
 package tests.demoqa;
 
-import components.RandomFormData;
+import components.AllFieldsRandomData;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -15,7 +15,7 @@ import static io.qameta.allure.Allure.step;
 public class PositiveFormTests extends TestBase {
 
     private final RegistrationPageSteps steps = new RegistrationPageSteps();
-    private final RandomFormData rndData = new RandomFormData();
+    private final AllFieldsRandomData rndData = new AllFieldsRandomData();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -42,8 +42,8 @@ public class PositiveFormTests extends TestBase {
 
         step("Verify successful form submit", () -> {
             steps.checkResultTitle();
-            for (String key : rndData.dataForCheck.keySet()) {
-                String value = rndData.dataForCheck.get(key);
+            for (String key : rndData.allDataForCheck.keySet()) {
+                String value = rndData.allDataForCheck.get(key);
                 steps.checkResultValue(key, value);
             }
         });
