@@ -1,14 +1,15 @@
-package components;
+package helpers;
 
 import com.github.javafaker.Faker;
 
 import java.util.*;
 
-import static utils.RandomUtils.getRandomDate;
-import static utils.RandomUtils.getRandomItem;
+import static helpers.RandomUtils.getRandomDate;
+import static helpers.RandomUtils.getRandomItem;
 
-public class AllFieldsRandomData extends RequiredFieldsRandomData{
+public class RandomFormData {
 
+    private final static List<String> GENDERS = Arrays.asList("Male", "Female", "Other");
     private final static List<String> SUBJECTS = Arrays.asList("Accounting", "Arts", "Civics", "Chemistry"
             , "Commerce", "Computer Science", "Economics", "Maths", "Physics", "Social Studies");
     private final static List<String> HOBBIES = Arrays.asList("Sports", "Reading", "Music");
@@ -23,7 +24,10 @@ public class AllFieldsRandomData extends RequiredFieldsRandomData{
     private final Faker faker = new Faker();
     private final Calendar dateOfBirth = getRandomDate();
 
+    public String firstName = faker.name().firstName();
+    public String lastName = faker.name().lastName();
     public String email = faker.internet().emailAddress();
+    public String gender = getRandomItem(GENDERS);
     public String mobileNumber = faker.phoneNumber().subscriberNumber(10);
     public String subject = getRandomItem(SUBJECTS);
     public String hobby = getRandomItem(HOBBIES);
@@ -35,7 +39,7 @@ public class AllFieldsRandomData extends RequiredFieldsRandomData{
     public String month = dateOfBirth.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
     public String year = Integer.toString(dateOfBirth.get(Calendar.YEAR));
 
-    public Map<String, String> allDataForCheck = new HashMap<String, String>() {{
+    public Map<String, String> dataForCheck = new HashMap<String, String>() {{
         put("Student Name", firstName + " " + lastName);
         put("Student Email", email);
         put("Gender", gender);

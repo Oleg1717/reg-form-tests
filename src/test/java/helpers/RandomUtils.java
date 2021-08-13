@@ -1,4 +1,4 @@
-package utils;
+package helpers;
 
 import com.github.javafaker.Faker;
 
@@ -14,10 +14,8 @@ public class RandomUtils {
     }
 
     public static Calendar getRandomDate() {
-
         Faker faker = new Faker();
         Calendar dateOfBirth = new GregorianCalendar();
-
         dateOfBirth.setTime(faker.date().birthday());
         return dateOfBirth;
     }
