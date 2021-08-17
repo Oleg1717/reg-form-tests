@@ -1,35 +1,36 @@
 package tests;
 
-import helpers.AllureAttachments;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.codeborne.selenide.Configuration.*;
-import static config.Credentials.credentials;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static config.Project.isVideoOn;
+import static helpers.AllureAttachments.*;
+import static helpers.DriverSettings.configure;
+import static helpers.DriverUtils.getSessionId;
 
 public class TestBase {
     @BeforeAll
     static void setup() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        startMaximized = true;
-        baseUrl = "https://demoqa.com";
-        if (!credentials.remoteDriverUrl().equals("")) {
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-            remote = credentials.remoteDriverUrl();
-        }
-        browserCapabilities = capabilities;
+        configure();
     }
 
     @AfterEach
     @Step("Add attachments")
-    public void tearDown() {
-        AllureAttachments.getScreenshotAs("last screenshot");
-        AllureAttachments.pageSource();
-        AllureAttachments.browserConsoleLogs();
-        AllureAttachments.addVideo();
+    public void addAttachments() {
+        String sessionId = getSessionId();
+
+        addScreenshotAs("last screenshot");
+        addPageSource();
+        addBrowserConsoleLogs();
+//        AllureAttachments.attachNetwork(); // todo
+
+        closeWebDriver();
+
+        if (isVideoOn()) {
+            addVideo(sessionId);
+        }
     }
 }
 

@@ -108,7 +108,7 @@ public class FillFormSteps {
 
     @Step("Added screenshot: {elementName}")
     public FillFormSteps addElementScreenshot(String selector, String elementName) {
-        AllureAttachments.getElementScreenshotAs(selector, elementName);
+        AllureAttachments.addElementScreenshotAs(selector, elementName);
         return this;
     }
 
