@@ -1,4 +1,4 @@
-package tests.demoqa;
+package tests.demoqa.forms;
 
 import helpers.RandomFormData;
 import io.qameta.allure.Link;
