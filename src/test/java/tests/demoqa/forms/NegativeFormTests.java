@@ -1,16 +1,14 @@
 package tests.demoqa.forms;
 
 import helpers.RandomFormData;
-import io.qameta.allure.Link;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.CheckResultSteps;
 import steps.FillFormGroupSteps;
 import tests.TestBase;
 
+@Feature("DemoQA form tests")
 public class NegativeFormTests extends TestBase {
 
     private final FillFormGroupSteps groupedSteps = new FillFormGroupSteps();
@@ -20,6 +18,7 @@ public class NegativeFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Field tests")
     @DisplayName("Testing a form with an empty \"First name\" field")
     void negativeFirstNameTest() {
         RandomFormData rndData = new RandomFormData();
@@ -32,6 +31,7 @@ public class NegativeFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Field tests")
     @DisplayName("Testing a form with an empty \"Last name\" field")
     void negativeLastNameTest() {
         RandomFormData rndData = new RandomFormData();
@@ -44,6 +44,7 @@ public class NegativeFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Field tests")
     @DisplayName("Testing a form with an empty \"Email\" field")
     void negativeEmailTest() {
         RandomFormData rndData = new RandomFormData();
@@ -56,6 +57,7 @@ public class NegativeFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Field tests")
     @DisplayName("Testing a form with the \"Gender\" field value not selected")
     void negativeGenderTest() {
         RandomFormData rndData = new RandomFormData();
@@ -68,6 +70,7 @@ public class NegativeFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Field tests")
     @DisplayName("Testing a form with the \"Date of birth\" field value not selected")
     void negativeDateOfBirthTest() {
         RandomFormData rndData = new RandomFormData();

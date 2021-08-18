@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.Step;
 import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -23,7 +22,6 @@ public class TestBase {
     }
 
     @AfterEach
-    @Step("Add attachments")
     public void addAttachments() {
         String sessionId = getSessionId();
 

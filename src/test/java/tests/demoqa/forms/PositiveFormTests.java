@@ -1,15 +1,13 @@
 package tests.demoqa.forms;
 
 import helpers.RandomFormData;
-import io.qameta.allure.Link;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.FillFormGroupSteps;
 import tests.TestBase;
 
+@Feature("DemoQA form tests")
 public class PositiveFormTests extends TestBase {
 
     private final RandomFormData rndData = new RandomFormData();
@@ -19,6 +17,7 @@ public class PositiveFormTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
+    @Story("Registration tests")
     @DisplayName("Student registration form test with random data")
     void positiveTypeTest() {
         groupedSteps.fillForm(rndData);

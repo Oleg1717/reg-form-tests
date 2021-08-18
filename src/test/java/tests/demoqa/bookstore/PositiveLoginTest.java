@@ -1,11 +1,7 @@
 package tests.demoqa.bookstore;
 
 import com.github.javafaker.Faker;
-import io.qameta.allure.Link;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import org.junit.jupiter.api.Disabled;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
@@ -14,22 +10,23 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+@Feature("DemoQA bookstore tests")
 public class PositiveLoginTest extends TestBase {
 
     private final Faker faker = new Faker();
-    public String firstName = faker.name().firstName();
-    public String lastName = faker.name().lastName();
-    public String userName = firstName+"."+lastName;
-    public String password = faker.internet()
-            .password(8, 20, true, true, true);
 
     @Test
-    @Disabled
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
+    @Story("Registration tests")
     @DisplayName("Login page test with random data")
     void newUserTest() {
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String userName = firstName + "." + lastName;
+        String password = faker.internet()
+                .password(8, 20, true, true, true);
         step("Check new user creation", () -> {
             step("Open book store application login page", () -> {
                 open("/login");
@@ -47,18 +44,20 @@ public class PositiveLoginTest extends TestBase {
             });
             step("Check Captcha", () -> $("#g-recaptcha").click());
             step("Register to book store", () -> $("#register")).click();
-            //step("Check that the new user is registered", switchTo().alert()::accept);
+            step("Check that the new user is registered", switchTo().alert()::accept);
             sleep(8);
         });
     }
 
     @Test
-    @Disabled
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
+    @Story("Registration tests")
     @DisplayName("Login page test with existing user")
     void existingUserTest() {
+        String userName = "ri1999";
+        String password = "!123qweASD";
         step("Check new user creation", () -> {
             step("Open book store application login page", () -> {
                 open("/login");
@@ -69,8 +68,8 @@ public class PositiveLoginTest extends TestBase {
                 step("Fill Password field", () -> $("#password").val(password));
             });
             step("Click NewUser button", () -> {
-                $("#newUser").click();
-                $(".main-header").shouldHave(text("Register"));
+                $("#login").click();
+                $(".main-header").shouldHave(text("Profile"));
             });
 
         });
