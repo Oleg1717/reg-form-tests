@@ -16,7 +16,6 @@ import static io.qameta.allure.Allure.step;
 
 @Feature("DemoQA bookstore tests")
 @Tag("bookstore")
-@JiraIssues({@JiraIssue("AUTO-17")})
 @Severity(SeverityLevel.NORMAL)
 @Owner("OlegV")
 @Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
@@ -25,10 +24,12 @@ public class PositiveLoginTest extends TestBase {
     private final Faker faker = new Faker();
 
     @Test
+    @AllureId("5518")
+    @JiraIssues({@JiraIssue("AUTO-17")})
     @Disabled
     @Story("Registration tests")
     @DisplayName("Login page test with random data")
-    void newUserTest() {
+    void newUser() {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String userName = firstName + "." + lastName;
@@ -57,9 +58,11 @@ public class PositiveLoginTest extends TestBase {
     }
 
     @Test
+    @AllureId("5519")
+    @JiraIssues({@JiraIssue("AUTO-17")})
     @Story("Registration tests")
     @DisplayName("Login page test with existing user")
-    void existingUserTest() {
+    void existingUser() {
         String userName = "ri1999";
         String password = "!123qweASD";
         step("Check new user creation", () -> {

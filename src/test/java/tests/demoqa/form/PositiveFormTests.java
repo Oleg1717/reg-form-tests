@@ -17,12 +17,14 @@ public class PositiveFormTests extends TestBase {
     private final FillFormGroupSteps groupedSteps = new FillFormGroupSteps();
 
     @Test
+    @AllureId("5615")
+    @JiraIssues({@JiraIssue("AUTO-17")})
     @Severity(SeverityLevel.NORMAL)
     @Owner("OlegV")
     @Link(name = "ToolsQA: Practice form", url = "https://demoqa.com/automation-practice-form")
     @Story("Registration tests")
     @DisplayName("Student registration form test with random data")
-    void positiveTypeTest() {
+    void positiveType() {
         groupedSteps.fillForm(rndData);
         groupedSteps.checkResult(rndData);
     }
