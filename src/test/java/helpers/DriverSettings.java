@@ -41,6 +41,7 @@ public class DriverSettings {
 
         capabilities.setCapability(CAPABILITY, chromeOptions);
         browserCapabilities = capabilities;
+        startMaximized=true;
         baseUrl = "https://demoqa.com";
     }
 }

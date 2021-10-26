@@ -25,6 +25,7 @@ dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.rest-assured:rest-assured:4.4.0",
             "com.github.javafaker:javafaker:1.0.2",
             "org.aeonbits.owner:owner:1.0.12",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
@@ -59,5 +60,17 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+task form(type: Test) {
+    useJUnitPlatform {
+        includeTags 'form'
+    }
+}
+
+task bookstore(type: Test) {
+    useJUnitPlatform {
+        includeTags 'bookstore'
     }
 }

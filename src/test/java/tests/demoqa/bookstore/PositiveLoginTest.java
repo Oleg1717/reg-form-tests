@@ -1,8 +1,12 @@
 package tests.demoqa.bookstore;
 
 import com.github.javafaker.Faker;
+import helpers.annotations.JiraIssue;
+import helpers.annotations.JiraIssues;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -11,14 +15,17 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 @Feature("DemoQA bookstore tests")
+@Tag("bookstore")
+@JiraIssues({@JiraIssue("AUTO-17")})
+@Severity(SeverityLevel.NORMAL)
+@Owner("OlegV")
+@Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
 public class PositiveLoginTest extends TestBase {
 
     private final Faker faker = new Faker();
 
     @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Owner("OlegV")
-    @Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
+    @Disabled
     @Story("Registration tests")
     @DisplayName("Login page test with random data")
     void newUserTest() {
@@ -50,9 +57,6 @@ public class PositiveLoginTest extends TestBase {
     }
 
     @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Owner("OlegV")
-    @Link(name = "ToolsQA: Book store application", url = "https://demoqa.com/login")
     @Story("Registration tests")
     @DisplayName("Login page test with existing user")
     void existingUserTest() {
@@ -71,8 +75,12 @@ public class PositiveLoginTest extends TestBase {
                 $("#login").click();
                 $(".main-header").shouldHave(text("Profile"));
             });
-
         });
+        sleep(4000);
     }
 
+
+
 }
+
+
