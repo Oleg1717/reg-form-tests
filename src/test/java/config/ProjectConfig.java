@@ -21,9 +21,6 @@ public interface ProjectConfig extends Config {
     @Key("browserSize")
     String browserSize();
 
-    @Key("browserMobileView")
-    String browserMobileView();
-
     @Key("remoteDriverUrl")
     String remoteDriverUrl();
 
