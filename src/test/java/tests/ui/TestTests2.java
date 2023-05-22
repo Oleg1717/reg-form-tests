@@ -1,6 +1,7 @@
 package tests.ui;
 
 import com.codeborne.selenide.Selenide;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,8 +32,9 @@ class TestTests2 extends TestBase {
     void test1() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -41,8 +43,9 @@ class TestTests2 extends TestBase {
     void test2() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -51,8 +54,9 @@ class TestTests2 extends TestBase {
     void test3() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -61,8 +65,9 @@ class TestTests2 extends TestBase {
     void test4() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -71,8 +76,9 @@ class TestTests2 extends TestBase {
     void test5() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся");
         });
     }
 
@@ -81,8 +87,9 @@ class TestTests2 extends TestBase {
     void test6() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -91,8 +98,9 @@ class TestTests2 extends TestBase {
     void test7() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 
@@ -101,8 +109,9 @@ class TestTests2 extends TestBase {
     void test8() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("равно");
         });
     }
 
@@ -111,8 +120,9 @@ class TestTests2 extends TestBase {
     void test9() {
         step("Проверка", () -> {
             sleep(3000);
-            open("http://localhost/");
-            $("body").shouldHave(text("localhost"));
+            open("https://ya.ru/");
+            Assertions.assertThat($("input#text").getAttribute("placeholder"))
+                    .isEqualTo("найдётся всё");
         });
     }
 }

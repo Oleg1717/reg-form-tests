@@ -24,8 +24,6 @@ public class DriverSettings {
         Configuration.browser = projectConfig().browserName();
         Configuration.browserVersion = projectConfig().browserVersion();
         Configuration.browserSize = projectConfig().browserSize();
-        Configuration.pageLoadTimeout = 120000;
-        Configuration.timeout = 10000;
 
         if (!projectConfig().remoteDriverUrl().equals("")) {
             //capabilities.setCapability("enableVNC", true);
