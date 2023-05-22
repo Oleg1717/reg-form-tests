@@ -1,5 +1,7 @@
 package tests.ui;
 
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
@@ -17,6 +19,11 @@ class TestTests2 extends TestBase {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @AfterEach
+    void down() {
+        Selenide.closeWebDriver();
     }
 
     @Test
