@@ -3,26 +3,33 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
-@Config.Sources({
-        "system:properties",
-        "classpath:config/local.properties",
-        "classpath:config/remote.properties"
-})
+@Config.Sources({"system:properties"})
 public interface ProjectConfig extends Config {
-    @DefaultValue("chrome")
-    @Key("browser")
-    String browser();
 
-    @DefaultValue("91.0")
-    @Key("browserVersion")
+    @Config.Key("environment")
+    String environment();
+
+    @Config.Key("threads")
+    @DefaultValue("2")
+    int threads();
+
+    @Config.Key("remote.driver.url")
+    @Config.DefaultValue("")
+    String remoteDriverUrl();
+
+    @Config.Key("browser.name")
+    @Config.DefaultValue("chrome")
+    String browserName();
+
+    @Config.Key("browser.version")
     String browserVersion();
 
-    @DefaultValue("1920x1080")
-    @Key("browserSize")
+    @Config.Key("browser.size")
+    @Config.DefaultValue("1280x1024")
     String browserSize();
 
-    @Key("remoteDriverUrl")
-    String remoteDriverUrl();
+    @Config.Key("sso.values")
+    String ssoValues();
 
     @Key("videoStorage")
     String videoStorage();
