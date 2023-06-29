@@ -3,6 +3,7 @@ package tests.ui;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
 
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-class TestTests {
+class TestTests extends TestBase {
 
     public void sleep(int milliseconds) {
         try {
