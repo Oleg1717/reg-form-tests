@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 class TestTests {
@@ -16,6 +19,13 @@ class TestTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void successfulSearchTest() {
+        open("https://www.google.com/");
+        $("[name=q]").setValue("selenide").pressEnter();
+        $("[id=search]").shouldHave(text("https://ru.selenide.org"));
     }
 
     @Test
